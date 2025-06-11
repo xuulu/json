@@ -3,7 +3,7 @@ import ReactJsonView from '@microlink/react-json-view'
 import type {OnSelectProps} from '@microlink/react-json-view';
 
 export const JsonTree: React.FC<{ data: any,  onChoose?:(select: OnSelectProps) => void }> = ({data,onChoose}) => (
-    <>
+    <div className="overflow-auto">
         <ReactJsonView
             src={data}
             // theme='apathy:inverted'   // 主题
@@ -16,5 +16,5 @@ export const JsonTree: React.FC<{ data: any,  onChoose?:(select: OnSelectProps) 
             }}
         />
         <br />
-    </>
+    </div>
 );

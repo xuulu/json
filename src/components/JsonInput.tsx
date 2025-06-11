@@ -7,6 +7,8 @@ interface JsonInputProps {
 
 export const JsonInput: React.FC<JsonInputProps> = ({value, onChange}) => (
     <textarea
+        id="json-input"
+        name="json-input"
         className="form-control"
         style={{height: "300px", fontFamily: "monospace"}}
         value={value}
