@@ -5,14 +5,24 @@ interface JsonInputProps {
     onChange: (value: string) => void;
 }
 
-export const JsonInput: React.FC<JsonInputProps> = ({value, onChange}) => (
-    <textarea
-        id="json-input"
-        name="json-input"
-        className="form-control"
-        style={{height: "300px", fontFamily: "monospace"}}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder="请输入JSON数据（单引号、True、None等自动纠错）"
-    />
-);
+export const JsonInput: React.FC<JsonInputProps> = ({value, onChange}) => {
+
+    return (
+        <textarea
+            style={{
+                height: "300px",
+                fontFamily: "monospace",
+                whiteSpace: "pre-line",  // 支持换行显示
+            }}
+            id="json-input"
+            name="json-input"
+            className="form-control"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={
+            `Ctrl + D 收藏本网站，防止迷路
+            请输入JSON数据（单引号、None等自动纠错）
+            `}
+        />
+    )
+};

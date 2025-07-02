@@ -43,7 +43,11 @@ const App: React.FC = () => {
 
     // 下载 JSON 文件
     const handleDownload = useCallback(() => {
-        parsed ? downloadJson(rawInput) : setError("请输入有效的 JSON 数据，再进行下载");
+        parsed
+            ?
+            downloadJson(parsed)
+            :
+            setError("请输入有效的 JSON 数据，再进行下载");
     }, [parsed]);
 
     // 清空所有状态

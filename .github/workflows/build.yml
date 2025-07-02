@@ -1,0 +1,35 @@
+name: 持续集成 – 使用 pnpm 构建项目
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: 检出代码
+
+      - name: 设置 pnpm (v9.5)
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.5.0
+          run_install: false
+
+      - name: 设置 Node.js 环境 (20 版本)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: 安装依赖（锁文件校验）
+        run: pnpm install --frozen-lockfile
+
+      - name: 执行构建
+        run: pnpm build
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: 构建产物-dist
+          path: dist/
+          if-no-files-found: error
